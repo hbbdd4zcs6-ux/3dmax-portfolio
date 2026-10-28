@@ -1,0 +1,241 @@
+/* 三维建模作业 · 站点样式 */
+:root {
+  --bg: #0d0d0f;
+  --surface: #15151a;
+  --line: rgba(255, 255, 255, 0.07);
+  --text: #ececef;
+  --muted: #8a8a94;
+  --accent: #a98cff;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC",
+               "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* 页头 */
+.site-head {
+  padding: 88px 0 56px;
+  border-bottom: 1px solid var(--line);
+}
+
+.eyebrow {
+  margin: 0 0 18px;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(30px, 5vw, 46px);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.lede {
+  max-width: 46em;
+  margin: 18px 0 0;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+/* 作品网格 */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 28px;
+  padding: 56px 0 72px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(169, 140, 255, 0.4);
+}
+
+.thumb {
+  aspect-ratio: 16 / 9;
+  background: #000;
+  overflow: hidden;
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .thumb img { transform: scale(1.03); }
+
+.card-body { padding: 20px 22px 24px; }
+
+.card-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.num {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+}
+
+.tag {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  border: 1px solid rgba(169, 140, 255, 0.35);
+  border-radius: 999px;
+  padding: 2px 9px;
+}
+
+.card h2 {
+  margin: 0 0 6px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.meta {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.card.is-empty {
+  background: transparent;
+  border-style: dashed;
+  justify-content: flex-end;
+}
+
+.card.is-empty .thumb {
+  background: transparent;
+  height: 0;
+  aspect-ratio: auto;
+}
+
+.card.is-empty h2 { color: var(--muted); }
+
+/* 作品页 */
+.back {
+  display: inline-block;
+  margin: 48px 0 40px;
+  font-size: 14px;
+  color: var(--muted);
+  transition: color 0.2s ease;
+}
+
+.back:hover { color: var(--accent); }
+
+.work-head { padding-bottom: 40px; }
+
+.work-head h1 { margin-bottom: 14px; }
+
+.hero { margin: 0 0 20px; }
+
+figure { margin: 0; }
+
+figure img {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: #000;
+}
+
+figcaption {
+  margin-top: 10px;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.figure-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-bottom: 56px;
+}
+
+.section {
+  padding: 34px 0;
+  border-top: 1px solid var(--line);
+}
+
+.section h2 {
+  margin: 0 0 18px;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.section h2::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  margin-right: 12px;
+  vertical-align: middle;
+  background: var(--accent);
+}
+
+.section p {
+  margin: 0 0 16px;
+  max-width: 44em;
+  color: #c9c9d1;
+}
+
+.section p:last-child { margin-bottom: 0; }
+
+/* 页脚 */
+.site-foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 32px;
+  justify-content: space-between;
+  padding: 40px 0 64px;
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.site-foot p { margin: 0; }
+
+@media (max-width: 640px) {
+  .wrap { padding: 0 20px; }
+  .site-head { padding: 60px 0 40px; }
+  .grid { padding: 40px 0 56px; gap: 20px; }
+}
