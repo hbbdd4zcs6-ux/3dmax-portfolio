@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>02 衣柜 · 三维建模作业</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+</head>
+<body>
+
+<div class="wrap">
+
+  <a class="back" href="../index.html">← 目录</a>
+
+  <header class="work-head">
+    <h1>衣柜</h1>
+    <p class="work-lede">双列开放柜。外框用挤出做出进深，边缘走切角，层板逐个复制排列，整个做法都围绕「挤出—连接—切角」这一串命令展开。</p>
+  </header>
+
+  <div class="work-figs">
+
+    <figure class="viewer">
+      <model-viewer src="../assets/models/work-02.glb"
+                    alt="衣柜 3D 模型"
+                    camera-controls
+                    auto-rotate
+                    auto-rotate-delay="1200"
+                    shadow-intensity="0.9"
+                    exposure="1.05"
+                    environment-image="neutral">
+      </model-viewer>
+      <div class="viewer-fallback" id="viewer-fallback">3D 模型暂不可用</div>
+      <figcaption>拖动旋转 / Drag to orbit</figcaption>
+    </figure>
+
+    <figure class="hero-fig">
+      <img src="../assets/img/work-02/p.jpg" alt="衣柜 斜视图">
+      <figcaption>斜视 / Perspective</figcaption>
+    </figure>
+
+  </div>
+
+</div>
+
+<main class="paper">
+  <div class="wrap">
+
+    <section class="section">
+      <h2>制作过程</h2>
+      <p>先把柜体外框的轮廓勾出来，再用挤出给进深。这样柜体的厚度和两侧立柱的宽度都好控制，后面改尺寸也只需要回到轮廓里改。</p>
+      <p>层板是单独做的长方体，按层高等距复制，靠捕捉贴到立柱内侧。层板和立柱之间如果差一点点，正面看是通的，斜过来就穿模或者漏缝。</p>
+      <p>外框的直角都走了切角，让边缘出现一条很窄的斜面。这一步是做完整件东西之后最想补的：纯直角的两块面受光几乎一样，正面和侧面会糊成一片，看不出体积；切出一条斜面，光在这里折一次，轮廓就立起来了。</p>
+      <p>切角之前先用「连接」在边上补出需要的边。不先加边直接切，切角会把整块面一起削掉，削完形状就不对了——这是这次返工最多的一步。</p>
+    </section>
+
+    <section class="section">
+      <h2>思路讲解</h2>
+      <p>这次用的三个命令其实是一条链：挤出把二维轮廓变成体量，连接给切角准备出可控的边，切角把硬边变成两个面。顺序固定，缺一环后面就不成立。</p>
+      <p>切角的宽度也不是越大越好。太宽会显得笨重，太窄又看不出来，还在渲染里变成一条脏线。这次试了几次，最后落在很小的一个数值上，只在边缘留一点转折。</p>
+      <p>层板选择复制而不是逐个建，是因为间距一旦不统一，整排看上去就是歪的；复制出来再整体往上挪，间距自然一致。</p>
+    </section>
+
+    <section class="section">
+      <h2>总结与反思</h2>
+      <p>这次只出了一张斜视图，正视图和左视图的构图一直调不好，就先用这一张交上。缺三视图其实是个遗憾，因为正交视图最能看出比例问题，斜视图会把这些藏起来。</p>
+      <p>材质还是纯色，没有木纹，柜子看起来像石膏做的。层板的间距也是凭感觉定的，没有按实际收纳的东西去推敲，格子的高度有点随意。</p>
+      <p>下次想补的是柜门和把手，还有让切角的宽度在不同部位有区别——边框宽一点、层板窄一点，会更像真家具。</p>
+    </section>
+
+    <footer class="paper-foot">
+      <p><a href="https://github.com/hbbdd4zcs6-ux/3dmax-portfolio" target="_blank" rel="noopener">源文件（衣柜.max）在 GitHub 仓库</a></p>
+      <p>2026 年 10 月</p>
+    </footer>
+
+  </div>
+</main>
+
+<script>
+(function () {
+  var mv = document.querySelector('model-viewer');
+  var fb = document.getElementById('viewer-fallback');
+  if (!mv) return;
+  function fail() {
+    mv.style.display = 'none';
+    fb.style.display = 'flex';
+  }
+  mv.addEventListener('error', fail);
+  setTimeout(function () {
+    if (!window.customElements || !customElements.get('model-viewer')) fail();
+  }, 6000);
+})();
+</script>
+
+</body>
+</html>

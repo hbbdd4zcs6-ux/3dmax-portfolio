@@ -238,6 +238,30 @@ figcaption {
 
 .hero-fig { padding-top: 64px; }
 
+/* 3D 预览 */
+
+.viewer { padding-top: 64px; }
+
+model-viewer {
+  display: block;
+  width: 100%;
+  height: clamp(340px, 62vh, 620px);
+  background: #000;
+  --poster-color: #000;
+  --progress-bar-color: rgba(255, 255, 255, 0.5);
+}
+
+.viewer-fallback {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  height: clamp(340px, 62vh, 620px);
+  background: #060606;
+  color: #555;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+}
+
 .figure-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
