@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>03 窗帘 · 三维建模作业</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+</head>
+<body>
+
+<div class="shell">
+
+  <a class="back" href="../index.html">← 索引</a>
+
+  <header class="work-head">
+    <p class="eyebrow">PLATE 03 ／ 放样 · 移动 · 缩放</p>
+    <h1>窗帘</h1>
+    <p class="work-lede">一幅落地布帘加一根挂杆。帘身的波浪来自一条起伏的样条线，靠放样拉出整幅高度，再用移动和缩放把轮廓调顺。</p>
+    <dl class="work-spec">
+      <div><dt>做法</dt><dd>放样 · 移动 · 缩放</dd></div>
+      <div><dt>日期</dt><dd>2026.10.30</dd></div>
+      <div><dt>图像</dt><dd>01 张 ＋ 模型</dd></div>
+    </dl>
+  </header>
+
+  <div class="work-figs">
+
+    <figure class="plate">
+      <div class="frame">
+        <model-viewer src="../assets/models/work-03.glb"
+                      alt="窗帘 3D 模型"
+                      camera-controls
+                      auto-rotate
+                      auto-rotate-delay="1200"
+                      shadow-intensity="0.9"
+                      exposure="1.05"
+                      environment-image="neutral">
+        </model-viewer>
+        <div class="viewer-fallback" id="viewer-fallback">3D 模型暂不可用</div>
+      </div>
+      <figcaption><span>可旋转 / Orbit</span><span>WEBGL</span></figcaption>
+    </figure>
+
+    <figure class="plate">
+      <div class="frame">
+        <img src="../assets/img/work-03/p.jpg" alt="窗帘 渲染图">
+      </div>
+      <figcaption><span>正视 / Front</span><span>1600 × 900</span></figcaption>
+    </figure>
+
+  </div>
+
+</div>
+
+<main class="shell">
+  <div class="notes">
+
+    <section class="note">
+      <h2>制作过程</h2>
+      <div class="note-body">
+        <p>先做挂杆：一根细长的圆柱横在顶部，两端封口。位置定在整幅窗帘的最高点，后面的东西都对着它对齐。</p>
+        <p>帘身用样条线起步。在顶视图里画一条横向的波浪线，波峰和波谷的数量直接决定褶皱有多少道——这条线就是放样的截面。再画一条竖直的直线当路径。</p>
+        <p>接着用放样：截面选那条波浪线，路径选竖线，一次拉出整幅的高度。放样出来的布面是从上到下贯通的，褶皱的走向自然就是竖的。</p>
+        <p>放样完还不对，用移动和缩放微调：整体宽度拉到位，褶皱的深浅再收一点。挂环单独做了一个小圆环，按等距复制，靠捕捉对到挂杆上。</p>
+      </div>
+    </section>
+
+    <section class="note">
+      <h2>思路讲解</h2>
+      <div class="note-body">
+        <p>放样这个工具的好处是形状和走向分开控制：截面管「长什么样」，路径管「往哪延伸」。想改褶皱的道数，回样条线里加减点就行，不用从头再做一个。</p>
+        <p>它跟挤出不一样的地方在于，挤出是把一个轮廓整体推出去，放样可以让截面沿路径变化。做窗帘这种「一条波浪要贯通整个高度」的东西，放样比一个个面去拼省事得多。</p>
+        <p>放样之后那一步移动和缩放，其实是补救放样默认比例不理想的问题。这一步不能省，不然出来的东西会比想象的窄或者厚。</p>
+      </div>
+    </section>
+
+    <section class="note">
+      <h2>总结与反思</h2>
+      <div class="note-body">
+        <p>这次最想解决但没解决的是贴图。本来想给布面加一张织物纹理，让表面有线感，但贴上去一直不显示。查了一下，多半是放样生成的物体默认没有 UVW 坐标，贴图没有地方映射，需要加一个 UVW 贴图修改器把坐标投上去；也可能只是贴图连错了通道，或者没打开视口显示。下次会先在一个 Box 上把贴图流程走通，再套到放样物体上。</p>
+        <p>褶皱还是太均匀。真实窗帘挂在杆上靠两端会收紧、中间会摊开，疏密不一样；这次从上到下几乎是一条条等宽的竖向波纹。</p>
+        <p>另外只出了一张正视图。窗帘的厚度、和墙面的距离，在正面图上完全看不出来，所以这页配了可旋转的模型来补这个空缺。</p>
+      </div>
+    </section>
+
+  </div>
+
+  <footer class="foot">
+    <p><a href="https://github.com/hbbdd4zcs6-ux/3dmax-portfolio" target="_blank" rel="noopener">源文件（窗帘.max）在 GitHub 仓库</a></p>
+    <p>2026.10</p>
+  </footer>
+</main>
+
+<script>
+(function () {
+  var mv = document.querySelector('model-viewer');
+  var fb = document.getElementById('viewer-fallback');
+  if (!mv) return;
+  function fail() {
+    mv.style.display = 'none';
+    fb.style.display = 'flex';
+  }
+  mv.addEventListener('error', fail);
+  setTimeout(function () {
+    if (!window.customElements || !customElements.get('model-viewer')) fail();
+  }, 6000);
+})();
+</script>
+
+</body>
+</html>

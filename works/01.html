@@ -8,30 +8,42 @@
 </head>
 <body>
 
-<div class="wrap">
+<div class="shell">
 
-  <a class="back" href="../index.html">← 目录</a>
+  <a class="back" href="../index.html">← 索引</a>
 
   <header class="work-head">
+    <p class="eyebrow">PLATE 01 ／ 基础建模</p>
     <h1>沙发</h1>
     <p class="work-lede">三座布艺沙发。整件东西拆成坐垫、靠背、扶手、底架四部分，全部由长方体改出来，没有用到曲面。</p>
+    <dl class="work-spec">
+      <div><dt>做法</dt><dd>长方体 · 捕捉 · 复制</dd></div>
+      <div><dt>日期</dt><dd>2026.10.28</dd></div>
+      <div><dt>图像</dt><dd>03 张</dd></div>
+    </dl>
   </header>
 
   <div class="work-figs">
 
-    <figure class="hero-fig">
-      <img src="../assets/img/work-01/p.jpg" alt="沙发 斜视图">
-      <figcaption>斜视 / Perspective</figcaption>
+    <figure class="plate">
+      <div class="frame">
+        <img src="../assets/img/work-01/p.jpg" alt="沙发 斜视图">
+      </div>
+      <figcaption><span>斜视 / Perspective</span><span>1600 × 900</span></figcaption>
     </figure>
 
     <div class="figure-row">
-      <figure>
-        <img src="../assets/img/work-01/f.jpg" alt="沙发 正视图">
-        <figcaption>正视 / Front</figcaption>
+      <figure class="plate">
+        <div class="frame">
+          <img src="../assets/img/work-01/f.jpg" alt="沙发 正视图">
+        </div>
+        <figcaption><span>正视 / Front</span><span>RENDER</span></figcaption>
       </figure>
-      <figure>
-        <img src="../assets/img/work-01/l.jpg" alt="沙发 左视图">
-        <figcaption>侧视 / Side</figcaption>
+      <figure class="plate">
+        <div class="frame">
+          <img src="../assets/img/work-01/l.jpg" alt="沙发 左视图">
+        </div>
+        <figcaption><span>侧视 / Side</span><span>RENDER</span></figcaption>
       </figure>
     </div>
 
@@ -39,36 +51,42 @@
 
 </div>
 
-<main class="paper">
-  <div class="wrap">
+<main class="shell">
+  <div class="notes">
 
-    <section class="section">
+    <section class="note">
       <h2>制作过程</h2>
-      <p>先按大致的实物比例做出一个坐垫的长方体，把它当基准。靠背、扶手、底架都围着这个基准往外做，后面改尺寸时只需要改一处，其他部件跟着走。</p>
-      <p>然后把捕捉打开，勾上顶点和边，把靠背吸附到坐垫后沿对平，扶手吸附到两端。这一步是为了让几块之间严丝合缝——不靠捕捉，手工拖总是差个零点几厘米，镜头一斜就看出缝隙和穿插。</p>
-      <p>坐垫做好一个之后，用 Shift 配合移动复制出另外两个，保证三个尺寸完全一致、间距完全一致，靠背也照同样的办法复制出三块。扶手用了切角，做出顶端那个斜面，再旋转摆到两端。最后加一块薄板把底部连起来。</p>
+      <div class="note-body">
+        <p>先按大致的实物比例做出一个坐垫的长方体，把它当基准。靠背、扶手、底架都围着这个基准往外做，后面改尺寸时只需要改一处，其他部件跟着走。</p>
+        <p>然后把捕捉打开，勾上顶点和边，把靠背吸附到坐垫后沿对平，扶手吸附到两端。这一步是为了让几块之间严丝合缝——不靠捕捉，手工拖总是差个零点几厘米，镜头一斜就看出缝隙和穿插。</p>
+        <p>坐垫做好一个之后，用 Shift 配合移动复制出另外两个，保证三个尺寸完全一致、间距完全一致，靠背也照同样的办法复制出三块。扶手用了切角，做出顶端那个斜面，再旋转摆到两端。最后加一块薄板把底部连起来。</p>
+      </div>
     </section>
 
-    <section class="section">
+    <section class="note">
       <h2>思路讲解</h2>
-      <p>沙发这类家具的好处是几乎全由长方体变化而来，适合练基础操作。思路是先定一个最小的单元——坐垫——把它做好做准，其余部件围着它生长，而不是照着整体轮廓硬凑。</p>
-      <p>这次体会最深的是「复制」而不是「重复建」。三个坐垫如果各自动手做三次，尺寸一定会有细微差别，摆在一起就会歪，而且以后想统一改高度得改三遍。复制出来的则是完全相同的副本。</p>
-      <p>捕捉也是同样的道理。靠肉眼对齐一两次还行，做到十几块的时候误差会累积，最后整个东西看着就是松的。</p>
+      <div class="note-body">
+        <p>沙发这类家具的好处是几乎全由长方体变化而来，适合练基础操作。思路是先定一个最小的单元——坐垫——把它做好做准，其余部件围着它生长，而不是照着整体轮廓硬凑。</p>
+        <p>这次体会最深的是「复制」而不是「重复建」。三个坐垫如果各自动手做三次，尺寸一定会有细微差别，摆在一起就会歪，而且以后想统一改高度得改三遍。复制出来的则是完全相同的副本。</p>
+        <p>捕捉也是同样的道理。靠肉眼对齐一两次还行，做到十几块的时候误差会累积，最后整个东西看着就是松的。</p>
+      </div>
     </section>
 
-    <section class="section">
+    <section class="note">
       <h2>总结与反思</h2>
-      <p>最明显的问题是边角太硬。真实沙发的边缘都是软的，坐垫压下去会有弧度，这次一块倒角都没做，所以看着还是几个方块拼起来。下次想给坐垫加个小的倒角，或者试试涡轮平滑。</p>
-      <p>材质只给了纯色，没有贴图，所以表面像塑料，没有布料的感觉。后面得学 UV 展开和布纹贴图。</p>
-      <p>渲染也还没摸清。灯摆得不好，画面发暗，靠背受光不均匀；背景一直是纯黑的，本来是临时凑合，结果就这么交上来了。下件作品打算先把布光固定成一套流程。</p>
+      <div class="note-body">
+        <p>最明显的问题是边角太硬。真实沙发的边缘都是软的，坐垫压下去会有弧度，这次一块倒角都没做，所以看着还是几个方块拼起来。下次想给坐垫加个小的倒角，或者试试涡轮平滑。</p>
+        <p>材质只给了纯色，没有贴图，所以表面像塑料，没有布料的感觉。后面得学 UV 展开和布纹贴图。</p>
+        <p>渲染也还没摸清。灯摆得不好，画面发暗，靠背受光不均匀；背景一直是纯黑的，本来是临时凑合，结果就这么交上来了。下件作品打算先把布光固定成一套流程。</p>
+      </div>
     </section>
-
-    <footer class="paper-foot">
-      <p><a href="https://github.com/hbbdd4zcs6-ux/3dmax-portfolio" target="_blank" rel="noopener">源文件（沙发.max）在 GitHub 仓库</a></p>
-      <p>2026 年 10 月</p>
-    </footer>
 
   </div>
+
+  <footer class="foot">
+    <p><a href="https://github.com/hbbdd4zcs6-ux/3dmax-portfolio" target="_blank" rel="noopener">源文件（沙发.max）在 GitHub 仓库</a></p>
+    <p>2026.10</p>
+  </footer>
 </main>
 
 </body>
