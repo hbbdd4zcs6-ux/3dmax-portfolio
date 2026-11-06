@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>03 窗帘 · 三维建模作业</title>
 <link rel="stylesheet" href="../assets/css/style.css">
-<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+<script type="module" src="../assets/vendor/model-viewer.min.js"></script>
 </head>
 <body>
 
@@ -99,13 +99,14 @@
   var mv = document.querySelector('model-viewer');
   var fb = document.getElementById('viewer-fallback');
   if (!mv) return;
-  function fail() {
+  function fail(msg) {
     mv.style.display = 'none';
+    fb.textContent = msg;
     fb.style.display = 'flex';
   }
-  mv.addEventListener('error', fail);
+  mv.addEventListener('error', function () { fail('模型文件加载失败'); });
   setTimeout(function () {
-    if (!window.customElements || !customElements.get('model-viewer')) fail();
+    if (!window.customElements || !customElements.get('model-viewer')) fail('3D 组件未加载');
   }, 6000);
 })();
 </script>
