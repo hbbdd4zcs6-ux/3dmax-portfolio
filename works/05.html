@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>05 鼠标 · 三维建模作业</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+</head>
+<body>
+
+<div class="shell">
+
+  <a class="back" href="../index.html">← 索引</a>
+
+  <header class="work-head">
+    <p class="eyebrow">PLATE 05 ／ 切角 · 加线 · 涡轮平滑 · 车削</p>
+    <h1>鼠标</h1>
+    <p class="work-lede">一只无线鼠标。外壳从长方体起，切角定轮廓，靠涡轮平滑变圆润，滚轮用车削旋转出来，按键的分模线靠挤出和加线压出细槽。</p>
+    <dl class="work-spec">
+      <div><dt>做法</dt><dd>切角 · 挤出 · 涡轮平滑 · 车削 · 加线</dd></div>
+      <div><dt>日期</dt><dd>2026.11.07</dd></div>
+      <div><dt>图像</dt><dd>01 张 ＋ 模型</dd></div>
+    </dl>
+  </header>
+
+  <div class="work-figs">
+
+    <figure class="plate">
+      <div class="frame">
+        <model-viewer src="../assets/models/work-05.glb"
+                      alt="鼠标 3D 模型"
+                      camera-controls
+                      auto-rotate
+                      auto-rotate-delay="1200"
+                      shadow-intensity="0.9"
+                      exposure="1"
+                      environment-image="neutral"
+                      field-of-view="26deg"
+                      camera-orbit="auto auto 98%">
+        </model-viewer>
+        <div class="viewer-fallback" id="viewer-fallback">3D 模型暂不可用</div>
+      </div>
+      <figcaption><span>可旋转 / Orbit</span><span>WEBGL</span></figcaption>
+    </figure>
+
+    <figure class="plate">
+      <div class="frame">
+        <img src="../assets/img/work-05/p.jpg" alt="鼠标 斜视图">
+      </div>
+      <figcaption><span>斜视 / Perspective</span><span>1600 × 900</span></figcaption>
+    </figure>
+
+  </div>
+
+</div>
+
+<main class="shell">
+  <div class="notes">
+
+    <section class="note">
+      <h2>制作过程</h2>
+      <div class="note-body">
+        <p>主体从长方体起。先把四周的直角切掉，切角削出一圈窄斜面——这一圈斜面就是后面平滑时轮廓的「锚点」。</p>
+        <p>然后挂上涡轮平滑。平滑会把所有直角都磨圆，包括本来该保住的边，所以切角之后还要「加线」：在关键位置补上新的边，把平滑的收缩挡在那里，形状才不会塌成一团。</p>
+        <p>键的分模线是挤出来的：选出一圈窄面往里压，压出一条沟，再用加线把沟的边缘固定住，平滑之后这条缝依然清晰。</p>
+        <p>滚轮用「车削」：画一条滚轮的半剖面样条线，绕一条轴旋转一圈，一个带轴心的轮子就出来了。</p>
+      </div>
+    </section>
+
+    <section class="note">
+      <h2>思路讲解</h2>
+      <div class="note-body">
+        <p>涡轮平滑是「把方的变圆的」，但代价是体积会缩、细节会糊。切角和加线就是对抗这个代价的办法：切角决定哪条边要有转折，加线决定转折处平滑的影响范围能扩多远，两根线离得越近，平滑后那条边越硬。</p>
+        <p>所以这件东西不是「做完形状再平滑」，而是一边加线一边看平滑后的结果。线加错了，平滑预览就是塌的，得回去补。</p>
+        <p>车削和放样都是「由一条线生成一个体」，区别在于车削是绕轴旋转，适合做回转体——滚轮、瓶子、轴套这一类。这次第一次用，比想象中省事。</p>
+      </div>
+    </section>
+
+    <section class="note">
+      <h2>总结与反思</h2>
+      <div class="note-body">
+        <p>平滑之后整体比原来小了一圈，尤其是前端收得太快，鼠标看起来比正常的小一号。这就是加线不够密的结果，应该在前后两端多补几圈。</p>
+        <p>左右键之间的接缝有轻微的凹陷，平滑时两条边的距离没配平。合模的位置本来就该是最平滑的地方，这里露了破绽。</p>
+        <p>材质只给了一个浅灰色，没有做磨砂塑料的质感，也没有做滚轮的纹路和侧面的防滑槽。这只鼠标现在能看出形状，但不像一个能握在手里的东西。</p>
+      </div>
+    </section>
+
+  </div>
+
+  <footer class="foot">
+    <p><a href="https://github.com/hbbdd4zcs6-ux/3dmax-portfolio" target="_blank" rel="noopener">源文件（鼠标.max）在 GitHub 仓库</a></p>
+    <p>2026.11</p>
+  </footer>
+</main>
+
+<script>
+(function () {
+  var mv = document.querySelector('model-viewer');
+  var fb = document.getElementById('viewer-fallback');
+  if (!mv) return;
+  function fail() {
+    mv.style.display = 'none';
+    fb.style.display = 'flex';
+  }
+  mv.addEventListener('error', fail);
+  setTimeout(function () {
+    if (!window.customElements || !customElements.get('model-viewer')) fail();
+  }, 6000);
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>04 显示屏 · 三维建模作业</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+</head>
+<body>
+
+<div class="shell">
+
+  <a class="back" href="../index.html">← 索引</a>
+
+  <header class="work-head">
+    <p class="eyebrow">PLATE 04 ／ 插入 · 挤出 · 弯曲 · 贴图</p>
+    <h1>显示屏</h1>
+    <p class="work-lede">一台木质外框的显示屏。屏幕的凹陷靠「插入」缩边再加「挤出」压深，支架用弯曲修改器拉出弧度，屏幕画面是贴图。</p>
+    <dl class="work-spec">
+      <div><dt>做法</dt><dd>多边形插入 · 挤出 · 弯曲 · 贴图</dd></div>
+      <div><dt>日期</dt><dd>2026.11.01</dd></div>
+      <div><dt>图像</dt><dd>01 张 ＋ 模型</dd></div>
+    </dl>
+  </header>
+
+  <div class="work-figs">
+
+    <figure class="plate">
+      <div class="frame">
+        <model-viewer src="../assets/models/work-04.glb"
+                      alt="显示屏 3D 模型"
+                      camera-controls
+                      auto-rotate
+                      auto-rotate-delay="1200"
+                      shadow-intensity="0.9"
+                      exposure="1"
+                      environment-image="neutral"
+                      field-of-view="26deg"
+                      camera-orbit="auto auto 98%">
+        </model-viewer>
+        <div class="viewer-fallback" id="viewer-fallback">3D 模型暂不可用</div>
+      </div>
+      <figcaption><span>可旋转 / Orbit</span><span>WEBGL</span></figcaption>
+    </figure>
+
+    <figure class="plate">
+      <div class="frame">
+        <img src="../assets/img/work-04/p.jpg" alt="显示屏 斜视图">
+      </div>
+      <figcaption><span>斜视 / Perspective</span><span>1600 × 900</span></figcaption>
+    </figure>
+
+  </div>
+
+</div>
+
+<main class="shell">
+  <div class="notes">
+
+    <section class="note">
+      <h2>制作过程</h2>
+      <div class="note-body">
+        <p>外框从一个长方体开始。进入多边形层级，选中正面，先用「插入」把它往里缩一圈，缩出来的这一圈就是边框的宽度；再对这块面做「挤出」，往负方向压，屏幕就凹进去了。</p>
+        <p>屏幕那块面单独给了材质，贴上一张图。为了让图正好落在屏幕上、不歪不拉，加了 UVW 贴图，用平面方式投上去再调比例。</p>
+        <p>木纹外框是另一套材质，贴在侧面和边框上。支架的立柱本来是一根直的圆柱，加了「弯曲」修改器，让它往一侧微微弯一点，看起来比笔直的一根杆自然。</p>
+        <p>底座是一个压扁的圆柱，和立柱对齐之后合并成一组。</p>
+      </div>
+    </section>
+
+    <section class="note">
+      <h2>思路讲解</h2>
+      <div class="note-body">
+        <p>「插入」加「挤出」是做凹陷最直接的一对命令：插入负责边框多宽，挤出负责凹多深，两个数值分开调，改边框不会连带动到深度，改深度也不会把边框撑大。</p>
+        <p>贴图这次终于成功了，跟上件窗帘正好相反。窗帘是放样生成的曲面，没有 UVW 坐标，图贴上去无处落脚；显示屏是多边形物体，本身就带坐标，材质连上就直接显示。所以上次的结论要修正一下——问题不在材质设置，在物体本身有没有坐标。</p>
+        <p>弯曲修改器要求足够的段数。立柱如果只有一两段，弯出来的是一根折线；段数加上去，弧度才连续。</p>
+      </div>
+    </section>
+
+    <section class="note">
+      <h2>总结与反思</h2>
+      <div class="note-body">
+        <p>边框留得太宽，屏占比显得小，整台机器看着有点笨。真实显示器的边框只有一厘米左右，这次做出来接近屏幕的四分之一。</p>
+        <p>支架太简单了。真实显示屏的立柱和屏幕之间有一个转轴，能俯仰调节；这次只有一根柱子顶着一块板，结构上说不通。</p>
+        <p>屏幕的图是平贴上去的，没有反光、没有环境，看起来像一张纸糊在框里，不像发光的屏幕。下一步想给屏幕材质加一点自发光，或者贴一张带屏幕反光的图。</p>
+      </div>
+    </section>
+
+  </div>
+
+  <footer class="foot">
+    <p><a href="https://github.com/hbbdd4zcs6-ux/3dmax-portfolio" target="_blank" rel="noopener">源文件（显示屏.max）在 GitHub 仓库</a></p>
+    <p>2026.11</p>
+  </footer>
+</main>
+
+<script>
+(function () {
+  var mv = document.querySelector('model-viewer');
+  var fb = document.getElementById('viewer-fallback');
+  if (!mv) return;
+  function fail() {
+    mv.style.display = 'none';
+    fb.style.display = 'flex';
+  }
+  mv.addEventListener('error', fail);
+  setTimeout(function () {
+    if (!window.customElements || !customElements.get('model-viewer')) fail();
+  }, 6000);
+})();
+</script>
+
+</body>
+</html>
