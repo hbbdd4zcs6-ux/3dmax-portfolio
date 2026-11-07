@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>06 键盘 · 三维建模作业</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+<script type="module" src="../assets/vendor/model-viewer.min.js"></script>
+</head>
+<body>
+
+<div class="shell">
+
+  <a class="back" href="../index.html">← 索引</a>
+
+  <header class="work-head">
+    <p class="eyebrow">PLATE 06 ／ 挤出 · 连接 · 插入 · 复制</p>
+    <h1>键盘</h1>
+    <p class="work-lede">一把全尺寸键盘。外壳靠挤出做厚度、插入压出键区凹槽，键帽做好一个之后整排复制，再用 R 逐个调整朝向和大小。</p>
+    <dl class="work-spec">
+      <div><dt>做法</dt><dd>挤出 · 连接 · 插入 · 复制 · 旋转</dd></div>
+      <div><dt>日期</dt><dd>2026.11.07</dd></div>
+      <div><dt>图像</dt><dd>01 张 ＋ 模型</dd></div>
+    </dl>
+  </header>
+
+  <div class="work-figs">
+
+    <figure class="plate">
+      <div class="frame">
+        <model-viewer src="../assets/models/work-06.glb"
+                      alt="键盘 3D 模型"
+                      camera-controls
+                      auto-rotate
+                      auto-rotate-delay="1200"
+                      shadow-intensity="0.9"
+                      exposure="1"
+                      environment-image="neutral"
+                      field-of-view="26deg"
+                      camera-orbit="auto auto 86%">
+        </model-viewer>
+        <div class="viewer-fallback" id="viewer-fallback">3D 模型暂不可用</div>
+      </div>
+      <figcaption><span>可旋转 / Orbit</span><span>WEBGL</span></figcaption>
+    </figure>
+
+    <figure class="plate">
+      <div class="frame">
+        <img src="../assets/img/work-06/p.jpg" alt="键盘 斜视图">
+      </div>
+      <figcaption><span>斜视 / Perspective</span><span>1600 × 900</span></figcaption>
+    </figure>
+
+  </div>
+
+</div>
+
+<main class="shell">
+  <div class="notes">
+
+    <section class="note">
+      <h2>制作过程</h2>
+      <div class="note-body">
+        <p>键盘外壳从一个长方体开始。先用「挤出」把整体厚度做出来，再选顶面用「插入」往里缩一圈、往下压，压出键区那块凹下去的区域——凹槽有了，键帽放进去才有「嵌在里面」的感觉，不然看着像平铺在一块板上。</p>
+        <p>键帽单独做一个：切出四边、用「插入」缩顶面，再「挤出」抬高，做上窄下宽的形状。这个形状是键帽的关键，直上直下的方块一看就是假的。</p>
+        <p>做好一个之后开始复制：先按行摆放，再按列复制，整片键区是复制出来的，不是一个个建的。</p>
+        <p>复制完还不能算完，得用 R 逐个调——标准键位是 1u 宽，但空格、Shift、回车、功能键都是 1.5u 到 6.25u，只能靠缩放把宽的那个拉长。外壳上多余的边则用「连接」补齐，避免挤出和插入的时候形状跑偏。</p>
+      </div>
+    </section>
+
+    <section class="note">
+      <h2>思路讲解</h2>
+      <div class="note-body">
+        <p>这件东西的难点不在单个键帽，在「量」。一百多个键帽，如果每个都从头做，不但做不完，而且尺寸一定对不齐。所以做法只能是：把第一个做准，剩下的交给复制。</p>
+        <p>R 的那一步是必须的，不能省。键帽的宽窄是分档的，一档差半格，靠肉眼摆放会立刻看出歪。真正按键盘去做，是先把每种尺寸的键帽各做一个，再按布局复制摆放。</p>
+        <p>「插入 + 挤出」这套组合和显示屏那件是同一个思路，区别只是这次是在同一个面上反复用：先缩出凹槽，再压出深度。工具就那么几个，会用之后换着用在不同的地方。</p>
+      </div>
+    </section>
+
+    <section class="note">
+      <h2>总结与反思</h2>
+      <div class="note-body">
+        <p>键帽上没有字符。真实键盘每一颗都有刻字，这次是纯色，所以远看像一块积木拼的板子，缺少「这是键盘」的信息。</p>
+        <p>键帽之间的缝隙做得太均匀了。真实键盘不同区域的行距、键距都略有差别，统一间距反而显得假。</p>
+        <p>外壳边缘是平直的，真实键盘通常有从后到前的坡度，手放上去才舒服。下次想给外壳加一个轻微的倾斜，或者用弯曲修改器压一点弧度。</p>
+      </div>
+    </section>
+
+  </div>
+
+  <footer class="foot">
+    <p><a href="https://github.com/hbbdd4zcs6-ux/3dmax-portfolio" target="_blank" rel="noopener">源文件（键盘.max）在 GitHub 仓库</a></p>
+    <p>2026.11</p>
+  </footer>
+</main>
+
+<script>
+(function () {
+  var mv = document.querySelector('model-viewer');
+  var fb = document.getElementById('viewer-fallback');
+  if (!mv) return;
+  function fail(msg) {
+    mv.style.display = 'none';
+    fb.textContent = msg;
+    fb.style.display = 'flex';
+  }
+  mv.addEventListener('error', function () { fail('模型文件加载失败'); });
+  setTimeout(function () {
+    if (!window.customElements || !customElements.get('model-viewer')) fail('3D 组件未加载');
+  }, 6000);
+})();
+</script>
+
+</body>
+</html>

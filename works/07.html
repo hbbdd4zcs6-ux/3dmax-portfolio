@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>07 手机 · 三维建模作业</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+<script type="module" src="../assets/vendor/model-viewer.min.js"></script>
+</head>
+<body>
+
+<div class="shell">
+
+  <a class="back" href="../index.html">← 索引</a>
+
+  <header class="work-head">
+    <p class="eyebrow">PLATE 07 ／ MAXScript · 圆角 · 标准材质</p>
+    <h1>手机</h1>
+    <p class="work-lede">一部直板手机。主体先用 MAXScript 生成基础几何，再加 Chamfer 圆角修改器把硬边磨圆，材质用标准材质，最后把几层零件成组。</p>
+    <dl class="work-spec">
+      <div><dt>做法</dt><dd>MAXScript · 基础几何体 · Chamfer · 标准材质</dd></div>
+      <div><dt>日期</dt><dd>2026.11.07</dd></div>
+      <div><dt>图像</dt><dd>02 张 ＋ 模型</dd></div>
+    </dl>
+  </header>
+
+  <div class="work-figs">
+
+    <figure class="plate">
+      <div class="frame">
+        <model-viewer src="../assets/models/work-07.glb"
+                      alt="手机 3D 模型"
+                      camera-controls
+                      auto-rotate
+                      auto-rotate-delay="1200"
+                      shadow-intensity="0.9"
+                      exposure="1"
+                      environment-image="neutral"
+                      field-of-view="26deg"
+                      camera-orbit="auto auto 98%">
+        </model-viewer>
+        <div class="viewer-fallback" id="viewer-fallback">3D 模型暂不可用</div>
+      </div>
+      <figcaption><span>可旋转 / Orbit</span><span>WEBGL</span></figcaption>
+    </figure>
+
+    <div class="figure-row">
+      <figure class="plate">
+        <div class="frame">
+          <img src="../assets/img/work-07/p.jpg" alt="手机 正面">
+        </div>
+        <figcaption><span>正面 / Front</span><span>1600 × 900</span></figcaption>
+      </figure>
+      <figure class="plate">
+        <div class="frame">
+          <img src="../assets/img/work-07/p2.jpg" alt="手机 背面">
+        </div>
+        <figcaption><span>背面 / Back</span><span>1600 × 900</span></figcaption>
+      </figure>
+    </div>
+
+  </div>
+
+</div>
+
+<main class="shell">
+  <div class="notes">
+
+    <section class="note">
+      <h2>制作过程</h2>
+      <div class="note-body">
+        <p>这次主体不是手拖出来的，是用 MAXScript 写几行代码生成的。机身是一个长方体，长宽厚三个数写成变量；屏幕、背板是两块薄一点的长方体，叠在机身两侧；摄像头模组是一个小圆柱加两个小圆，摆在背面一角。改尺寸的时候不用重新拖，改数字重跑一次就行。</p>
+        <p>脚本生成的东西全是硬边，所以下一步加 Chamfer：选机身的棱，给一个很小的圆角值，直角就变成圆弧过渡。倒角的段数决定圆滑程度，段数多一点，边缘在渲染里才不是一条生硬的折线。</p>
+        <p>材质用的是标准材质。机身纯黑、摄像头模组稍微亮一点，靠粗糙度区别——机身偏哑光，镜头偏反光，这样在黑色背景前也能看出是个什么物件。</p>
+        <p>最后把机身、屏幕、背板、摄像头全选，打成一组。这几个零件挨得近，不成组的话点选时很容易漏选一块，一移动整个机器就散了。</p>
+      </div>
+    </section>
+
+    <section class="note">
+      <h2>思路讲解</h2>
+      <div class="note-body">
+        <p>第一次用 MAXScript 建主体，最大的好处是「参数化」：机身多宽多厚全是数字，想试几种比例，改一个数重跑就行，比手动拖坐标快得多。缺点也很明显——脚本只管生成，形状好不好看它不管。</p>
+        <p>所以脚本之后的那一步反而更重要。Chamfer 是把「方块」变成「产品」的关键：任何真实的工业产品，边缘都不会是绝对的直角，总有一点倒角。少了这一下，脚本建得再准也像积木。</p>
+        <p>成组这个习惯是这次才体会到的。做单个物体时无所谓，一旦是几层薄板叠在一起，不成组就等着返工。</p>
+      </div>
+    </section>
+
+    <section class="note">
+      <h2>总结与反思</h2>
+      <div class="note-body">
+        <p>倒角的段数给少了，边角在近处看还是有点棱，尤其是机身上下四条长边。下次会单独给这几条边加段数，而不是整机统一一个值。</p>
+        <p>黑色在黑背景上最难表现，只能靠一点点高光勾出轮廓。这也是这次为什么补了一张背面图——正面几乎是一片黑，看不出厚度。</p>
+        <p>脚本建出来的结构比较「规整」，缺少手工建模时那种自然的取舍：真实的手机有卡槽、按键、听筒开孔、摄像头凸起的层次，这些细节这次都没有做。后面想试着手工在这台机器上补几个部件，把脚本的效率和手工的细节结合起来。</p>
+      </div>
+    </section>
+
+  </div>
+
+  <footer class="foot">
+    <p><a href="https://github.com/hbbdd4zcs6-ux/3dmax-portfolio" target="_blank" rel="noopener">源文件（手机.max）在 GitHub 仓库</a></p>
+    <p>2026.11</p>
+  </footer>
+</main>
+
+<script>
+(function () {
+  var mv = document.querySelector('model-viewer');
+  var fb = document.getElementById('viewer-fallback');
+  if (!mv) return;
+  function fail(msg) {
+    mv.style.display = 'none';
+    fb.textContent = msg;
+    fb.style.display = 'flex';
+  }
+  mv.addEventListener('error', function () { fail('模型文件加载失败'); });
+  setTimeout(function () {
+    if (!window.customElements || !customElements.get('model-viewer')) fail('3D 组件未加载');
+  }, 6000);
+})();
+</script>
+
+</body>
+</html>
