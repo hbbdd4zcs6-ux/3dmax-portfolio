@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>08 场景 · 三维建模作业</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+<script type="module" src="../assets/vendor/model-viewer.min.js"></script>
+</head>
+<body>
+
+<div class="shell">
+
+  <a class="back" href="../index.html">← 索引</a>
+
+  <header class="work-head">
+    <p class="eyebrow">PLATE 08 ／ 场景组合 · 修改器 · 镜像与旋转复制</p>
+    <h1>场景</h1>
+    <p class="work-lede">一间卧室的布景。两面墙加一块地板围成一个角，把前面几件单独做的东西摆进同一个空间，靠比例和位置关系把它们串起来。</p>
+    <dl class="work-spec">
+      <div><dt>做法</dt><dd>壳 · 挤出 · 插入 · 连接 · 切角 · 镜像 · 旋转复制</dd></div>
+      <div><dt>日期</dt><dd>2026.11.24</dd></div>
+      <div><dt>图像</dt><dd>01 张 ＋ 模型</dd></div>
+    </dl>
+  </header>
+
+  <div class="work-figs">
+
+    <figure class="plate">
+      <div class="frame">
+        <model-viewer src="../assets/models/work-08.glb"
+                      alt="卧室场景 3D 模型"
+                      camera-controls
+                      auto-rotate
+                      auto-rotate-delay="1200"
+                      shadow-intensity="0.9"
+                      exposure="0.9"
+                      environment-image="legacy"
+                      field-of-view="30deg"
+                      camera-orbit="-35deg 65deg 115%">
+        </model-viewer>
+        <div class="viewer-fallback" id="viewer-fallback">3D 模型暂不可用</div>
+      </div>
+      <figcaption><span>可旋转 / Orbit</span><span>WEBGL</span></figcaption>
+    </figure>
+
+    <figure class="plate">
+      <div class="frame">
+        <img src="../assets/img/work-08/p.jpg" alt="卧室场景 渲染图">
+      </div>
+      <figcaption><span>斜视 / Perspective</span><span>1600 × 900</span></figcaption>
+    </figure>
+
+  </div>
+
+</div>
+
+<main class="shell">
+  <div class="notes">
+
+    <section class="note">
+      <h2>制作过程</h2>
+      <div class="note-body">
+        <p>先搭空间：两块墙板和一块地板，拼成一个直角，剩下两面敞开。这个做法是特意留的——如果四面墙都封上，摄像机就没地方架了，除非把墙做成透明的。</p>
+        <p>墙体本身是单面的，加一个「壳」修改器就有了厚度，从侧面看才是一堵墙而不是一张纸。</p>
+        <p>窗户的位置不是估出来的。先在墙面用「连接」把需要的边线分出来，让这几条线正好框住窗户的范围，再沿这些线开口。先有线、再开洞，位置才准，边缘也干净——直接挖的话很容易把面搅乱。</p>
+        <p>家具沿用前面几件的做法：挤出给体量，插入缩出面板，切角把硬边磨一下，做出床头柜的抽屉缝和柜体的圆角。</p>
+        <p>两个床头柜只做了一个。做好之后用「镜像」复制到床的另一侧，两边严格对称，手摆一定会差一两厘米。台灯、书架上的摆件是绕着一个点「旋转复制」出来的，按角度分好，间距自然一致。</p>
+        <p>最后给统一的材质球，摆主光，渲出图。</p>
+      </div>
+    </section>
+
+    <section class="note">
+      <h2>思路讲解</h2>
+      <div class="note-body">
+        <p>这件东西真正在练的是「怎么把一个空间做准」，而不是单个家具做得多细。房间有了尺寸，家具才有参照：床是基准，床头柜比床垫矮一点，台灯立在柜面上到窗台高度，挂画的中心大致在站着平视的位置。</p>
+        <p>「镜像」和「旋转复制」解决的是同一个问题：对称和等距不能靠手感。两个床头柜必须一模一样、一左一右，用镜像最省事也最准；摆件绕一圈分布，用旋转复制一步到位，比一个个挪快得多。</p>
+        <p>「连接」用来定窗户的位置，是这次最有用的一个发现：它不是拿来改形状的，是用来「布线」的。线布对了，后面的开口、挤出、切角都有了落脚点。</p>
+      </div>
+    </section>
+
+    <section class="note">
+      <h2>总结与反思</h2>
+      <div class="note-body">
+        <p>材质只给了一个统一的浅色球，所以整间屋子像一具石膏模型或建筑白模：能看出结构，但完全没有「卧室」的感觉。床单、木地板、墙漆这些最能传达空间气质的材质，都还没有做。</p>
+        <p>灯光只有一盏主光从左上打进来，墙面有一块亮斑，但房间内部是平的，缺少从窗口进来的那种方向光和明暗过渡。</p>
+        <p>这只是一个「布景」，不是完整的房间。真实的室内要有天花板、踢脚线、门、插座开关这些细节，缺了它们，它更像展台上的沙盘。下一步想先补材质和灯光，再把墙面的细节做起来。</p>
+      </div>
+    </section>
+
+  </div>
+
+  <footer class="foot">
+    <p><a href="https://github.com/hbbdd4zcs6-ux/3dmax-portfolio" target="_blank" rel="noopener">源文件（场景.max）在 GitHub 仓库</a></p>
+    <p>2026.11</p>
+  </footer>
+</main>
+
+<script>
+(function () {
+  var mv = document.querySelector('model-viewer');
+  var fb = document.getElementById('viewer-fallback');
+  if (!mv) return;
+  function fail(msg) {
+    mv.style.display = 'none';
+    fb.textContent = msg;
+    fb.style.display = 'flex';
+  }
+  mv.addEventListener('error', function () { fail('模型文件加载失败'); });
+  setTimeout(function () {
+    if (!window.customElements || !customElements.get('model-viewer')) fail('3D 组件未加载');
+  }, 6000);
+})();
+</script>
+
+</body>
+</html>
